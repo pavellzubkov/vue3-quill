@@ -2,12 +2,26 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "noImplicitAny": false,
+    "skipLibCheck": true,
     "declaration": true,
     "strictNullChecks": false,
     "outDir": "./lib",
     "strict": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*","lib","example"]
+  "exclude": ["node_modules", "**/__tests__/*","lib","example"],
+  "types": [
+    "webpack-env"
+  ],
+  "paths": {
+    "@/*": [
+      "src/*"
+    ],
+    "path": [
+      "./node_modules/path-browserify"
+    ],
+    "stream": ["./node_modules/stream-browserify"]
+  }
 }
