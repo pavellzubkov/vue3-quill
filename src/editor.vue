@@ -2,13 +2,14 @@
   <section ref="editor"></section>
 </template>
 
-<script>
+<script lang="ts">
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 import Quill from 'quill'
 import { onMounted, ref, watch, onUnmounted, onBeforeUnmount } from 'vue'
+import { IEditorState } from './index'
 
 const defaultOptions = {
   theme: 'snow',
@@ -28,11 +29,11 @@ const defaultOptions = {
       [{ font: [] }],
       [{ align: [] }],
       ['clean'],
-      ['link', 'image', 'video']
-    ]
+      ['link', 'image', 'video'],
+    ],
   },
   placeholder: 'Insert content here ...',
-  readOnly: false
+  readOnly: false,
 }
 export default {
   name: 'quill-editor',
@@ -41,26 +42,26 @@ export default {
     value: String,
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     options: {
       type: Object,
       required: false,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   emits: ['ready', 'change', 'input', 'blur', 'focus', 'update:value'],
   setup(props, context) {
-    const state = {
+    const state: IEditorState = {
       editorOption: {},
-      quill: null
+      quill: null,
     }
 
     let _content = ''
 
     watch(
       () => props.value,
-      val => {
+      (val) => {
         if (state.quill) {
           if (val && val !== _content) {
             _content = val
@@ -69,12 +70,12 @@ export default {
             state.quill.setText('')
           }
         }
-      }
+      },
     )
 
     watch(
       () => props.content,
-      val => {
+      (val) => {
         if (state.quill) {
           if (val && val !== _content) {
             _content = val
@@ -83,16 +84,16 @@ export default {
             state.quill.setText('')
           }
         }
-      }
+      },
     )
 
     watch(
       () => props.disabled,
-      val => {
+      (val) => {
         if (state.quill) {
           state.quill.enable(!val)
         }
-      }
+      },
     )
 
     const editor = ref(null)
@@ -112,7 +113,7 @@ export default {
       if (editor.value) {
         // Options
         state.editorOption = mergeOptions(defaultOptions, props.options)
-        state.editorOption.readOnly = props.disabled ? true : false
+        state.editorOption.readOnly = !!props.disabled
         // Instance
         state.quill = new Quill(editor.value, state.editorOption)
         // console.log('intilized')
@@ -123,7 +124,7 @@ export default {
         }
 
         // Mark model as touched if editor lost focus
-        state.quill.on('selection-change', range => {
+        state.quill.on('selection-change', (range) => {
           if (!range) {
             context.emit('blur', state.quill)
           } else {
@@ -166,7 +167,6 @@ export default {
     })
 
     return { editor }
-  }
+  },
 }
 </script>
-
