@@ -7,9 +7,13 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
-import Quill from 'quill'
+import Quill, { QuillOptionsStatic } from 'quill'
 import { onMounted, ref, watch, onUnmounted, onBeforeUnmount } from 'vue'
-import { IEditorState } from './index'
+
+export interface IEditorState {
+  editorOption: QuillOptionsStatic
+  quill: Quill
+}
 
 const defaultOptions = {
   theme: 'snow',
