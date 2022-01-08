@@ -1,7 +1,6 @@
 import Quill from 'quill'
 import quillEditor from './editor.vue'
 
-// @ts-ignore
 quillEditor.install = function (app) {
   app.component(quillEditor.name, quillEditor)
 }
