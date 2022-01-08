@@ -48,6 +48,7 @@ module.exports = defineConfig({
         .tap((opts) => {
           opts.transpileOnly = false
           opts.happyPackMode = false
+          opts.configFile = 'tsconfig.json'
           return opts
         })
     }
