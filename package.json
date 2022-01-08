@@ -1,9 +1,9 @@
 {
-  "name": "vue3-quill",
-  "version": "0.2.6",
+  "name": "vue3-quill-dev",
+  "version": "0.2.7",
   "private": false,
   "main": "src/index.js",
-  "typings": "src/index.d.ts",
+  "typings": "lib/editor.vue.d.ts",
   "unpkg": "lib/vue3-quill.umd.min.js",
   "jsdelivr": "lib/vue3-quill.umd.min.js",
   "keywords": [
@@ -49,7 +49,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/flyween/vue3-quill.git"
+    "url": "git+https://github.com/flyween/vue3-quill.git"
   },
   "homepage": "https://flyween.github.io/vue3-quill",
   "license": "MIT",
@@ -74,5 +74,10 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "author": ""
 }
