@@ -8,9 +8,9 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 import Quill, { QuillOptionsStatic } from 'quill'
-import { onMounted, ref, watch, onUnmounted, onBeforeUnmount, defineComponent, render, h } from 'vue'
+import { onMounted, ref, watch, onUnmounted, onBeforeUnmount, defineComponent, h, PropType } from 'vue'
 
-export interface IEditorState {
+interface IEditorState {
   editorOption: QuillOptionsStatic
   quill: Quill
 }
@@ -38,17 +38,18 @@ const defaultOptions: QuillOptionsStatic = {
   placeholder: 'Insert content here ...',
   readOnly: false,
 }
+
 export const QuillEditorDev = defineComponent({
-  name: 'quill-editor-dev',
+  name: 'QuillEditorDev',
   props: {
-    content: String,
-    value: String,
+    content: String as PropType<string>,
+    value: String as PropType<any>,
     disabled: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false,
     },
     options: {
-      type: Object,
+      type: Object as PropType<QuillOptionsStatic>,
       required: false,
       default: () => ({}),
     },
