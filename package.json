@@ -1,9 +1,9 @@
 {
   "name": "vue3-quill-dev",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "private": false,
   "main": "src/index.ts",
-  "typings": "lib/vue3-quill-dev.vue.d.ts",
+  "typings": "lib/index.d.ts",
   "unpkg": "lib/vue3-quill-dev.umd.min.js",
   "jsdelivr": "lib/vue3-quill-dev.umd.min.js",
   "keywords": [
