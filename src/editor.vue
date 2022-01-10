@@ -8,16 +8,15 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 import Quill, { QuillOptionsStatic } from 'quill'
-import { onMounted, ref, watch, onUnmounted, onBeforeUnmount } from 'vue'
+import { onMounted, ref, watch, onUnmounted, onBeforeUnmount, defineComponent } from 'vue'
 
 export interface IEditorState {
   editorOption: QuillOptionsStatic
   quill: Quill
 }
 
-const defaultOptions = {
+const defaultOptions: QuillOptionsStatic = {
   theme: 'snow',
-  boundary: document.body,
   modules: {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
@@ -39,7 +38,7 @@ const defaultOptions = {
   placeholder: 'Insert content here ...',
   readOnly: false,
 }
-export default {
+export default defineComponent({
   name: 'quill-editor',
   props: {
     content: String,
@@ -172,5 +171,5 @@ export default {
 
     return { editor }
   },
-}
+})
 </script>

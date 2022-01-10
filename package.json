@@ -1,6 +1,6 @@
 {
   "name": "vue3-quill-dev",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "private": false,
   "main": "src/index.js",
   "typings": "lib/editor.vue.d.ts",
