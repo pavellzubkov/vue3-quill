@@ -1,9 +1,9 @@
 {
   "name": "vue3-quill-dev",
-  "version": "0.3.7",
+  "version": "0.3.9",
   "private": false,
-  "main": "src/index.js",
-  "typings": "lib/VueQuill.d.ts",
+  "main": "lib/vue3-quill-dev.common.js",
+  "typings": "lib/index.d.ts",
   "unpkg": "lib/vue3-quill-dev.umd.min.js",
   "jsdelivr": "lib/vue3-quill-dev.umd.min.js",
   "keywords": [
@@ -17,7 +17,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name vue3-quill-dev --dest lib src/index.js"
+    "lib": "vue-cli-service build --target lib --name vue3-quill-dev --dest lib src/index.ts"
   },
   "files": [
     "lib",
