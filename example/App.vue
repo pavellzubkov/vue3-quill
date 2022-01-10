@@ -16,7 +16,7 @@
 
 <script>
 import { reactive } from 'vue'
-import { Quill, quillEditor } from '../src/index'
+import { Quill, quillEditor } from '@'
 // console.log(Quill)
 
 import ImageUploader from "quill-image-uploader"

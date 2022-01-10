@@ -1,14 +1,14 @@
-<template>
-  <section ref="editor"></section>
-</template>
-
-<script lang="ts">
+// <template>
+//   <section ref="editor"></section>
+// </template>
+//
+// <script lang="ts">
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 import Quill, { QuillOptionsStatic } from 'quill'
-import { onMounted, ref, watch, onUnmounted, onBeforeUnmount, defineComponent } from 'vue'
+import { onMounted, ref, watch, onUnmounted, onBeforeUnmount, defineComponent, render, h } from 'vue'
 
 export interface IEditorState {
   editorOption: QuillOptionsStatic
@@ -38,8 +38,8 @@ const defaultOptions: QuillOptionsStatic = {
   placeholder: 'Insert content here ...',
   readOnly: false,
 }
-export default defineComponent({
-  name: 'quill-editor',
+export const QuillEditorDev = defineComponent({
+  name: 'quill-editor-dev',
   props: {
     content: String,
     value: String,
@@ -171,5 +171,8 @@ export default defineComponent({
 
     return { editor }
   },
+  render() {
+    return [h('selection', { ref: 'editor', ...this.$attrs })]
+  },
 })
-</script>
+// </script>
