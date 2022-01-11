@@ -1,6 +1,7 @@
 // 'use strict'
 // const path = require('path')
 const { defineConfig } = require('@vue/cli-service')
+const webpack = require('webpack')
 
 module.exports = defineConfig({
   pages: {
@@ -16,6 +17,12 @@ module.exports = defineConfig({
     // declaration (.d.ts) files.
     //
     // Discussed here https://github.com/vuejs/vue-cli/issues/1081
+    config.plugin('quill').use(
+      new webpack.ProvidePlugin({
+        'window.Quill': 'quill/dist/quill.js',
+        Quill: 'quill/dist/quill.js',
+      }),
+    )
     if (process.env.NODE_ENV === 'production') {
       config.module.rule('ts').uses.delete('cache-loader')
       config.module
@@ -28,14 +35,14 @@ module.exports = defineConfig({
           opts.configFile = 'tsconfig.json'
           return opts
         })
-      config.externals({
-        quill: {
-          root: 'Quill',
-          commonjs: 'quill',
-          commonjs2: 'quill',
-          amd: 'quill',
-        },
-      })
+      // config.externals({
+      //   quill: {
+      //     root: 'Quill',
+      //     commonjs: 'quill',
+      //     commonjs2: 'quill',
+      //     amd: 'quill',
+      //   },
+      // })
     }
   },
   parallel: false,
